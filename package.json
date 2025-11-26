@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "emulators": "npx firebase emulators:start",
-    "seed": "node scripts/seed-firestore.cjs"
+    "seed": "node scripts/seed-firestore.cjs",
+    "deploy": "pnpm build && npx firebase deploy --only hosting"
   },
   "dependencies": {
     "firebase": "^10.12.0",

@@ -1,75 +1,120 @@
-# React + TypeScript + Vite
+# 🎲 BoardTally
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A board game scoring app built with React + Firebase.
 
-Currently, two official plugins are available:
+**Live**: https://boardtally.web.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Local Development
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+### Prerequisites
 
-Note: This will impact Vite dev & build performances.
+- Node.js 18+
+- PNPM (`npm install -g pnpm`)
+- Java (required for Firebase emulators)
 
-## Expanding the ESLint configuration
+### Setup
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+```bash
+# Install dependencies
+pnpm install
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Install functions dependencies
+cd functions && npm install && cd ..
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Run Locally
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+You need **two terminals**:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**Terminal 1** - Start Firebase emulators:
+
+```bash
+pnpm emulators
 ```
+
+**Terminal 2** - Start dev server:
+
+```bash
+pnpm dev
+```
+
+Open http://localhost:5173
+
+### Seed Local Data (optional)
+
+If your emulator is empty:
+
+```bash
+pnpm seed
+```
+
+---
+
+## Deploy to Production
+
+```bash
+pnpm deploy
+```
+
+This builds the app and deploys to Firebase Hosting.
+
+---
+
+## Other Commands
+
+| Command          | Description                  |
+| ---------------- | ---------------------------- |
+| `pnpm dev`       | Start local dev server       |
+| `pnpm build`     | Build for production         |
+| `pnpm emulators` | Start Firebase emulators     |
+| `pnpm seed`      | Seed emulator with test data |
+| `pnpm deploy`    | Build & deploy to production |
+
+### Deploy specific services
+
+```bash
+# Deploy only hosting (app code)
+npx firebase deploy --only hosting
+
+# Deploy Firestore rules
+npx firebase deploy --only firestore:rules
+
+# Deploy Storage rules
+npx firebase deploy --only storage
+
+# Deploy Cloud Functions
+npx firebase deploy --only functions
+
+# Deploy everything
+npx firebase deploy
+```
+
+---
+
+## Project Structure
+
+```
+boardtally/
+├── src/                  # React app source
+│   ├── components/       # UI components
+│   ├── hooks/            # Custom hooks
+│   ├── lib/              # Firebase config
+│   ├── pages/            # Page components
+│   └── utils/            # Utility functions
+├── functions/            # Firebase Cloud Functions
+├── data/                 # JSON data files (for seeding)
+├── public/game-images/   # Local game thumbnails
+└── scripts/              # Build/migration scripts
+```
+
+---
+
+## Firebase Console
+
+- **Project**: https://console.firebase.google.com/project/boardtally
+- **Firestore**: View/edit database
+- **Storage**: View uploaded images
+- **Functions**: View logs & deployed functions
+- **Hosting**: View deployment history
