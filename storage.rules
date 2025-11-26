@@ -1,0 +1,12 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Allow read access to game images for everyone
+    match /game-images/{imageId} {
+      allow read: if true;
+      allow write: if true; // TODO: Restrict to authenticated users or functions
+    }
+  }
+}
+

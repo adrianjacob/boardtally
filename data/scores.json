@@ -1,0 +1,263 @@
+[
+  {
+    "id": "g1",
+    "date": "2025-11-15",
+    "gameId": 316554,
+    "gameName": "Dune: Imperium",
+    "expansions": [
+      {"id": 342031, "name": "Dune: Imperium – Rise of Ix"}
+    ],
+    "players": [
+      {"playerId": "p1", "score": 12, "isWinner": true},
+      {"playerId": "p3", "score": 10, "isWinner": false},
+      {"playerId": "p5", "score": 8, "isWinner": false},
+      {"playerId": "p7", "score": 7, "isWinner": false}
+    ]
+  },
+  {
+    "id": "g2",
+    "date": "2025-11-10",
+    "gameId": 167791,
+    "gameName": "Terraforming Mars",
+    "expansions": [
+      {"id": 247030, "name": "Terraforming Mars: Prelude"},
+      {"id": 255681, "name": "Terraforming Mars: Colonies"}
+    ],
+    "players": [
+      {"playerId": "p2", "score": 87, "isWinner": false},
+      {"playerId": "p4", "score": 92, "isWinner": true},
+      {"playerId": "p6", "score": 78, "isWinner": false}
+    ]
+  },
+  {
+    "id": "g3",
+    "date": "2025-11-08",
+    "gameId": 342942,
+    "gameName": "Ark Nova",
+    "expansions": [
+      {"id": 368966, "name": "Ark Nova: Marine Worlds"}
+    ],
+    "players": [
+      {"playerId": "p1", "score": 45, "isWinner": true},
+      {"playerId": "p2", "score": 38, "isWinner": false}
+    ]
+  },
+  {
+    "id": "g4",
+    "date": "2025-11-05",
+    "gameId": 224517,
+    "gameName": "Brass: Birmingham",
+    "expansions": [],
+    "players": [
+      {"playerId": "p3", "score": 142, "isWinner": false},
+      {"playerId": "p4", "score": 156, "isWinner": true},
+      {"playerId": "p8", "score": 134, "isWinner": false}
+    ]
+  },
+  {
+    "id": "g5",
+    "date": "2025-11-01",
+    "gameId": 162886,
+    "gameName": "Spirit Island",
+    "expansions": [
+      {"id": 193065, "name": "Spirit Island: Branch & Claw"}
+    ],
+    "players": [
+      {"playerId": "p5", "score": 1, "isWinner": true},
+      {"playerId": "p6", "score": 1, "isWinner": true},
+      {"playerId": "p9", "score": 1, "isWinner": true}
+    ]
+  },
+  {
+    "id": "g6",
+    "date": "2025-10-28",
+    "gameId": 316554,
+    "gameName": "Dune: Imperium",
+    "expansions": [],
+    "players": [
+      {"playerId": "p2", "score": 10, "isWinner": true},
+      {"playerId": "p7", "score": 10, "isWinner": false},
+      {"playerId": "p10", "score": 9, "isWinner": false}
+    ]
+  },
+  {
+    "id": "g7",
+    "date": "2025-10-25",
+    "gameId": 84876,
+    "gameName": "The Castles of Burgundy",
+    "expansions": [],
+    "players": [
+      {"playerId": "p1", "score": 234, "isWinner": true},
+      {"playerId": "p8", "score": 198, "isWinner": false}
+    ]
+  },
+  {
+    "id": "g8",
+    "date": "2025-10-22",
+    "gameId": 193738,
+    "gameName": "Great Western Trail",
+    "expansions": [],
+    "players": [
+      {"playerId": "p3", "score": 98, "isWinner": false},
+      {"playerId": "p4", "score": 112, "isWinner": true},
+      {"playerId": "p5", "score": 105, "isWinner": false},
+      {"playerId": "p9", "score": 89, "isWinner": false}
+    ]
+  },
+  {
+    "id": "g9",
+    "date": "2025-10-18",
+    "gameId": 167791,
+    "gameName": "Terraforming Mars",
+    "expansions": [],
+    "players": [
+      {"playerId": "p1", "score": 72, "isWinner": false},
+      {"playerId": "p6", "score": 81, "isWinner": true},
+      {"playerId": "p10", "score": 68, "isWinner": false}
+    ]
+  },
+  {
+    "id": "g10",
+    "date": "2025-10-15",
+    "gameId": 220308,
+    "gameName": "Gaia Project",
+    "expansions": [],
+    "players": [
+      {"playerId": "p2", "score": 145, "isWinner": false},
+      {"playerId": "p3", "score": 167, "isWinner": true},
+      {"playerId": "p7", "score": 152, "isWinner": false}
+    ]
+  },
+  {
+    "id": "g11",
+    "date": "2025-10-12",
+    "gameId": 316554,
+    "gameName": "Dune: Imperium",
+    "expansions": [
+      {"id": 342031, "name": "Dune: Imperium – Rise of Ix"},
+      {"id": 367466, "name": "Dune: Imperium – Immortality"}
+    ],
+    "players": [
+      {"playerId": "p4", "score": 14, "isWinner": true},
+      {"playerId": "p5", "score": 11, "isWinner": false},
+      {"playerId": "p8", "score": 13, "isWinner": false},
+      {"playerId": "p10", "score": 9, "isWinner": false}
+    ]
+  },
+  {
+    "id": "g12",
+    "date": "2025-10-08",
+    "gameId": 28720,
+    "gameName": "Brass: Lancashire",
+    "expansions": [],
+    "players": [
+      {"playerId": "p1", "score": 128, "isWinner": true},
+      {"playerId": "p2", "score": 128, "isWinner": false},
+      {"playerId": "p9", "score": 115, "isWinner": false}
+    ]
+  },
+  {
+    "id": "g13",
+    "date": "2025-10-05",
+    "gameId": 342942,
+    "gameName": "Ark Nova",
+    "expansions": [],
+    "players": [
+      {"playerId": "p3", "score": 32, "isWinner": false},
+      {"playerId": "p6", "score": 41, "isWinner": true},
+      {"playerId": "p7", "score": 28, "isWinner": false}
+    ]
+  },
+  {
+    "id": "g14",
+    "date": "2025-10-01",
+    "gameId": 162886,
+    "gameName": "Spirit Island",
+    "expansions": [
+      {"id": 262722, "name": "Spirit Island: Jagged Earth"}
+    ],
+    "players": [
+      {"playerId": "p1", "score": 0, "isWinner": false},
+      {"playerId": "p4", "score": 0, "isWinner": false}
+    ]
+  },
+  {
+    "id": "g15",
+    "date": "2025-09-28",
+    "gameId": 12333,
+    "gameName": "Twilight Struggle",
+    "expansions": [],
+    "players": [
+      {"playerId": "p2", "score": 20, "isWinner": true},
+      {"playerId": "p5", "score": -20, "isWinner": false}
+    ]
+  },
+  {
+    "id": "g16",
+    "date": "2025-09-24",
+    "gameId": 167791,
+    "gameName": "Terraforming Mars",
+    "expansions": [
+      {"id": 247030, "name": "Terraforming Mars: Prelude"}
+    ],
+    "players": [
+      {"playerId": "p3", "score": 95, "isWinner": true},
+      {"playerId": "p8", "score": 88, "isWinner": false},
+      {"playerId": "p9", "score": 76, "isWinner": false},
+      {"playerId": "p10", "score": 82, "isWinner": false}
+    ]
+  },
+  {
+    "id": "g17",
+    "date": "2025-09-20",
+    "gameId": 224517,
+    "gameName": "Brass: Birmingham",
+    "expansions": [],
+    "players": [
+      {"playerId": "p1", "score": 148, "isWinner": false},
+      {"playerId": "p6", "score": 162, "isWinner": true}
+    ]
+  },
+  {
+    "id": "g18",
+    "date": "2025-09-15",
+    "gameId": 316554,
+    "gameName": "Dune: Imperium",
+    "expansions": [
+      {"id": 342031, "name": "Dune: Imperium – Rise of Ix"}
+    ],
+    "players": [
+      {"playerId": "p2", "score": 11, "isWinner": false},
+      {"playerId": "p4", "score": 12, "isWinner": true},
+      {"playerId": "p7", "score": 11, "isWinner": false}
+    ]
+  },
+  {
+    "id": "g19",
+    "date": "2025-09-10",
+    "gameId": 182028,
+    "gameName": "Through the Ages: A New Story of Civilization",
+    "expansions": [],
+    "players": [
+      {"playerId": "p3", "score": 245, "isWinner": true},
+      {"playerId": "p5", "score": 212, "isWinner": false},
+      {"playerId": "p6", "score": 198, "isWinner": false}
+    ]
+  },
+  {
+    "id": "g20",
+    "date": "2025-09-05",
+    "gameId": 342942,
+    "gameName": "Ark Nova",
+    "expansions": [
+      {"id": 368966, "name": "Ark Nova: Marine Worlds"}
+    ],
+    "players": [
+      {"playerId": "p1", "score": 52, "isWinner": true},
+      {"playerId": "p8", "score": 44, "isWinner": false},
+      {"playerId": "p9", "score": 48, "isWinner": false},
+      {"playerId": "p10", "score": 39, "isWinner": false}
+    ]
+  }
+]
+
