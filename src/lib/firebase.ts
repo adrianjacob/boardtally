@@ -4,14 +4,13 @@ import { getStorage, connectStorageEmulator } from "firebase/storage";
 import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
 
 // Firebase configuration
-// TODO: Replace with your actual Firebase config when deploying to production
 const firebaseConfig = {
-  apiKey: "demo-api-key",
-  authDomain: "boardtally-dev.firebaseapp.com",
-  projectId: "boardtally-dev",
-  storageBucket: "boardtally-dev.appspot.com",
-  messagingSenderId: "123456789",
-  appId: "1:123456789:web:abc123",
+  apiKey: "AIzaSyDtaqgpJsUXIECxPWV98DIKgp2t95XLktQ",
+  authDomain: "boardtally.firebaseapp.com",
+  projectId: "boardtally",
+  storageBucket: "boardtally.firebasestorage.app",
+  messagingSenderId: "67917777022",
+  appId: "1:67917777022:web:6df05966814d43ff43702f",
 };
 
 // Initialize Firebase
