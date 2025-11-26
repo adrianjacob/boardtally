@@ -6,7 +6,7 @@ export interface Player {
 
 export interface GamePlayer {
   playerId: string
-  score: number
+  score: number | null
   isWinner: boolean
 }
 
@@ -24,7 +24,10 @@ export interface PlayerStats {
   gamesPlayed: number
   wins: number
   winRatio: number
+  expectedWins: number // Sum of 1/players for each game
+  performanceScore: number // (wins / expectedWins) * 100
   lastPlayed: string
+  form: ('W' | 'L')[] // Last 10 games, most recent first
 }
 
 export interface GameStats {

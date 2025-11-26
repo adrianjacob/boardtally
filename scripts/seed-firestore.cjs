@@ -22,8 +22,41 @@ admin.initializeApp({
 const db = admin.firestore();
 const bucket = admin.storage().bucket();
 
+async function clearCollection(collectionName) {
+  const collectionRef = db.collection(collectionName);
+  const snapshot = await collectionRef.get();
+  
+  if (snapshot.empty) {
+    console.log(`  Collection '${collectionName}' is already empty`);
+    return 0;
+  }
+  
+  // Firestore batch delete limit is 500, so we need to batch in chunks
+  const batchSize = 500;
+  const docs = snapshot.docs;
+  
+  for (let i = 0; i < docs.length; i += batchSize) {
+    const batch = db.batch();
+    const chunk = docs.slice(i, i + batchSize);
+    chunk.forEach((doc) => {
+      batch.delete(doc.ref);
+    });
+    await batch.commit();
+  }
+  
+  return snapshot.size;
+}
+
 async function seedData() {
   console.log('🌱 Seeding Firestore with data...\n');
+
+  // Clear existing data first
+  console.log('🗑️  Clearing existing data...');
+  const playersDeleted = await clearCollection('players');
+  console.log(`  ✓ Deleted ${playersDeleted} players`);
+  const scoresDeleted = await clearCollection('scores');
+  console.log(`  ✓ Deleted ${scoresDeleted} scores`);
+  console.log('');
 
   // Read JSON files
   const dataDir = path.join(__dirname, '..', 'data');
@@ -43,8 +76,9 @@ async function seedData() {
   console.log(`  Added ${players.length} players\n`);
 
   // Seed scores
-  console.log('📝 Adding scores...');
+  console.log(`📝 Adding ${scores.length} scores...`);
   const scoresRef = db.collection('scores');
+  let scoreCount = 0;
   for (const score of scores) {
     await scoresRef.doc(score.id).set({
       date: score.date,
@@ -53,9 +87,12 @@ async function seedData() {
       expansions: score.expansions || [],
       players: score.players,
     });
-    console.log(`  ✓ ${score.gameName} (${score.date})`);
+    scoreCount++;
+    if (scoreCount % 100 === 0) {
+      console.log(`  ... ${scoreCount}/${scores.length} scores added`);
+    }
   }
-  console.log(`  Added ${scores.length} scores\n`);
+  console.log(`  ✓ Added ${scores.length} scores\n`);
 
   // Upload game images to Storage emulator
   console.log('🖼️  Uploading game images...');

@@ -18,7 +18,7 @@ interface Game {
 
 interface PlayerScore {
   playerId: string
-  score: number
+  score: number | null
   isWinner: boolean
 }
 
@@ -30,7 +30,7 @@ interface AddScoreProps {
 
 export function AddScore({ players, onClose, onScoreAdded }: AddScoreProps) {
   const [selectedPlayers, setSelectedPlayers] = useState<string[]>([])
-  const [playerScores, setPlayerScores] = useState<Record<string, number>>({})
+  const [playerScores, setPlayerScores] = useState<Record<string, number | null>>({})
   const [winnerIds, setWinnerIds] = useState<string[]>([])
   
   const [gameSearch, setGameSearch] = useState('')
@@ -74,8 +74,8 @@ export function AddScore({ players, onClose, onScoreAdded }: AddScoreProps) {
         setWinnerIds(ids => ids.filter(id => id !== playerId))
         return newPlayers
       } else {
-        // Add player with default score of 0
-        setPlayerScores(scores => ({ ...scores, [playerId]: 0 }))
+        // Add player with default score of null (no score)
+        setPlayerScores(scores => ({ ...scores, [playerId]: null }))
         return [...prev, playerId]
       }
     })
@@ -89,7 +89,9 @@ export function AddScore({ players, onClose, onScoreAdded }: AddScoreProps) {
     )
   }
 
-  const updateScore = (playerId: string, score: number) => {
+  const updateScore = (playerId: string, value: string) => {
+    // Allow empty string to represent null (no score)
+    const score = value === '' ? null : parseInt(value) || 0
     setPlayerScores(prev => ({ ...prev, [playerId]: score }))
   }
 
@@ -130,7 +132,7 @@ export function AddScore({ players, onClose, onScoreAdded }: AddScoreProps) {
     try {
       const playerResults: PlayerScore[] = selectedPlayers.map(playerId => ({
         playerId,
-        score: playerScores[playerId] || 0,
+        score: playerScores[playerId] ?? null,
         isWinner: winnerIds.includes(playerId),
       }))
 
@@ -264,9 +266,10 @@ export function AddScore({ players, onClose, onScoreAdded }: AddScoreProps) {
                       </span>
                       <input
                         type="number"
-                        value={playerScores[playerId] || 0}
-                        onChange={(e) => updateScore(playerId, parseInt(e.target.value) || 0)}
+                        value={playerScores[playerId] ?? ''}
+                        onChange={(e) => updateScore(playerId, e.target.value)}
                         className="score-input"
+                        placeholder="—"
                       />
                       <button
                         type="button"

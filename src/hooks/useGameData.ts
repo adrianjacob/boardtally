@@ -47,48 +47,62 @@ export function useGameData() {
   const playerStats = useMemo((): PlayerStats[] => {
     const statsMap = new Map<
       string,
-      { gamesPlayed: number; wins: number; lastPlayed: string }
+      { gamesPlayed: number; wins: number; expectedWins: number; lastPlayed: string; form: ('W' | 'L')[] }
     >()
 
     // Initialize stats for all players
     for (const player of players) {
-      statsMap.set(player.id, { gamesPlayed: 0, wins: 0, lastPlayed: '' })
+      statsMap.set(player.id, { gamesPlayed: 0, wins: 0, expectedWins: 0, lastPlayed: '', form: [] })
     }
 
-    // Process all games
+    // Process all games (scores are already sorted by date desc)
     for (const game of scores) {
+      const numPlayers = game.players.length
+      const expectedWinChance = numPlayers > 0 ? 1 / numPlayers : 0
+
       for (const p of game.players) {
         const stats = statsMap.get(p.playerId)
         if (stats) {
           stats.gamesPlayed++
+          stats.expectedWins += expectedWinChance
           if (p.isWinner) stats.wins++
           if (!stats.lastPlayed || game.date > stats.lastPlayed) {
             stats.lastPlayed = game.date
+          }
+          // Add to form guide (limit to 10, most recent first)
+          if (stats.form.length < 10) {
+            stats.form.push(p.isWinner ? 'W' : 'L')
           }
         }
       }
     }
 
-    // Convert to array and calculate win ratio
-    // Sort: active players by win ratio, then new players (0 games) at the end
+    // Convert to array and calculate win ratio + performance score
+    // Sort: active players by performance score, then new players (0 games) at the end
     return players
       .map((player) => {
         const stats = statsMap.get(player.id)!
+        const performanceScore = stats.expectedWins > 0 
+          ? (stats.wins / stats.expectedWins) * 100 
+          : 0
         return {
           player,
           gamesPlayed: stats.gamesPlayed,
           wins: stats.wins,
           winRatio: stats.gamesPlayed > 0 ? stats.wins / stats.gamesPlayed : 0,
+          expectedWins: stats.expectedWins,
+          performanceScore,
           lastPlayed: stats.lastPlayed,
+          form: stats.form,
         }
       })
       .sort((a, b) => {
         // Players with games come first
         if (a.gamesPlayed > 0 && b.gamesPlayed === 0) return -1
         if (a.gamesPlayed === 0 && b.gamesPlayed > 0) return 1
-        // Among players with games, sort by win ratio then games played
+        // Among players with games, sort by performance score then games played
         if (a.gamesPlayed > 0 && b.gamesPlayed > 0) {
-          return b.winRatio - a.winRatio || b.gamesPlayed - a.gamesPlayed
+          return b.performanceScore - a.performanceScore || b.gamesPlayed - a.gamesPlayed
         }
         // New players sorted alphabetically
         return a.player.name.localeCompare(b.player.name)

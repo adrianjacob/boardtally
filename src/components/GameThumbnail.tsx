@@ -6,10 +6,9 @@ interface GameThumbnailProps {
   gameId: number
   gameName: string
   size?: 'small' | 'medium' | 'large'
-  loading?: 'eager' | 'lazy'
 }
 
-export function GameThumbnail({ gameId, gameName, size = 'medium', loading = 'lazy' }: GameThumbnailProps) {
+export function GameThumbnail({ gameId, gameName, size = 'medium' }: GameThumbnailProps) {
   const [status, setStatus] = useState<'loading' | 'loaded' | 'error'>('loading')
   const [url, setUrl] = useState<string | null>(null)
   const [retryCount, setRetryCount] = useState(0)
@@ -73,6 +72,6 @@ export function GameThumbnail({ gameId, gameName, size = 'medium', loading = 'la
     )
   }
 
-  return <img src={url!} alt={gameName} className={`game-thumbnail ${sizeClass}`} loading={loading} />
+  return <img src={url!} alt={gameName} className={`game-thumbnail ${sizeClass}`} />
 }
 
