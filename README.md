@@ -50,6 +50,15 @@ If your emulator is empty:
 pnpm seed
 ```
 
+### Pull Production Data to Local
+
+To get the latest data from production into your local environment:
+
+```bash
+pnpm pull    # Downloads prod data to JSON files
+pnpm seed    # Loads JSON files into emulator
+```
+
 ---
 
 ## Deploy to Production
@@ -64,13 +73,14 @@ This builds the app and deploys to Firebase Hosting.
 
 ## Other Commands
 
-| Command          | Description                  |
-| ---------------- | ---------------------------- |
-| `pnpm dev`       | Start local dev server       |
-| `pnpm build`     | Build for production         |
-| `pnpm emulators` | Start Firebase emulators     |
-| `pnpm seed`      | Seed emulator with test data |
-| `pnpm deploy`    | Build & deploy to production |
+| Command          | Description                   |
+| ---------------- | ----------------------------- |
+| `pnpm dev`       | Start local dev server        |
+| `pnpm build`     | Build for production          |
+| `pnpm emulators` | Start Firebase emulators      |
+| `pnpm seed`      | Seed emulator with local JSON |
+| `pnpm pull`      | Pull production data to local |
+| `pnpm deploy`    | Build & deploy to production  |
 
 ### Deploy specific services
 
