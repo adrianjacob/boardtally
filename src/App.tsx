@@ -103,7 +103,7 @@ function App() {
 
       <div className="layout">
         <div className="main-column">
-          <h2>SCORES</h2>
+          <h2>Scores ({scores.length})</h2>
           {scores.length === 0 ? (
             <p className="empty-state">No games recorded yet.</p>
           ) : (
@@ -179,7 +179,7 @@ function App() {
           )}
         </div>
         <aside className="sidebar player-stats-sidebar">
-          <h2>Players</h2>
+          <h2>Players ({playerStats.length})</h2>
           {playerStats.length === 0 ? (
             <p className="empty-state">No player stats yet.</p>
           ) : (
@@ -272,7 +272,7 @@ function App() {
         </aside>
 
         <aside className="sidebar game-stats-sidebar">
-          <h2>Games</h2>
+          <h2>Games ({gameStats.length})</h2>
           {gameStats.length === 0 ? (
             <p className="empty-state">No games played yet.</p>
           ) : (
